@@ -31,5 +31,27 @@ module.exports = {
             }
             return res.render('users/show', {user})
         })
+    },
+
+    /**
+     * Chargement de l'interface de création d'utilisateur.
+     * 
+     * @param {*} req 
+     * @param {*} res 
+     */
+    new: (req, res) => res.status(200).render('users/new'),
+
+    /**
+     * Sauvegarde d'un nouvel utilisateur en base.
+     * 
+     * @param {*} req 
+     * @param {*} res 
+     */
+    create: (req, res) => {
+        // Création de l'objet à insérer en base
+        let user = new User(req.body)
+        user.save()
+
+        return res.redirect('/users')
     }
 }

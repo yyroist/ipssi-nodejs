@@ -1,0 +1,25 @@
+<%- include ('../partials/header') %> 
+
+<div class="uk-container uk-margin-top">
+    <h1 class="uk-text-center">Ajouter un nouvel utilisateur</h1>
+
+    <p class="uk-text-center">Veuillez renseigner les informations du nouvel utilisateur :</p>
+
+    <div class="uk-width-1-2 uk-align-center">
+        <form action="/users/create" method="post">
+            <input type="text" name="lastname" placeholder="Nom" class="uk-input uk-form-small" required>
+            <input type="text" name="firstname" placeholder="Prénom" class="uk-input uk-form-small uk-margin-small-top" required>
+            <input type="number" step="1" name="age" placeholder="Âge" class="uk-input uk-form-small uk-margin-small-top" required>
+            
+            <button type="submit" class="uk-button uk-button-primary uk-button-small uk-margin-top uk-width-1-1">
+                Enregistrer
+            </button>
+        </form>
+
+        <a href="/users" class="uk-button uk-button-default uk-button-small uk-align-center">
+            Retour à la liste des utilisateurs
+        </a>
+    </div>
+</div>
+
+<%- include ('../partials/footer') %>
