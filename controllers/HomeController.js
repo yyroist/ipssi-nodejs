@@ -5,5 +5,5 @@ module.exports = {
      * @param {*} req 
      * @param {*} res 
      */
-    index: (req, res) => res.status(200).render('index', {user})
+    index: (req, res) => res.status(200).render('index')
 }
