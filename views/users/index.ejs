@@ -24,7 +24,9 @@
                         <td><%= user.firstname %></td>
                         <td><%= user.age %></td>
                         <td>
-                            <a href="/user/<%= user.id %>" uk-icon="icon: info" uk-tooltip="Consulter fiche utilisateur"></a>
+                            <a href="/user/<%= user.id %>" uk-icon="icon: info" uk-tooltip="Voir utilisateur"></a>
+                            <a href="/user/<%= user.id %>/delete" class="uk-text-danger" 
+                                uk-icon="icon: trash" uk-tooltip="Supprimer utilisateur"></a>
                         </td>
                     </tr>
                 <% }) %>

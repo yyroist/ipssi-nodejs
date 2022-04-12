@@ -4,7 +4,7 @@
  * 
  * Gestion du CRUD Utilisateur.
  */
-const User = require('../models/user') // Chargement du model User
+const User = require('../models/User') // Chargement du model User
 module.exports = {
 
     /**
@@ -24,10 +24,10 @@ module.exports = {
      * @param {*} req 
      * @param {*} res 
      */
-    show:  (req, res) => {
-        User.findOne({id: req.params.id}, (err, user) => {
+    show: (req, res) => {
+        User.findOne({_id: req.params.id}, (err, user) => {
             if (err) {
-                return res.status(404).render(404)
+                return res.status(404).render('errors/404')
             }
             return res.render('users/show', {user})
         })
@@ -53,5 +53,43 @@ module.exports = {
         user.save()
 
         return res.redirect('/users')
+    }, 
+
+    /**
+     * Edition d'utilisateur.
+     * 
+     * @param {*} req 
+     * @param {*} res 
+     */
+    edit: (req, res) => {
+        User.findOneAndUpdate({_id: req.params.id}, req.body, err => {
+            if (err) {
+                return res.status(500).render('errors/internal', {
+                    code: 500,
+                    message: 'Erreur lors de la mise à jour de l\'utilisateur.'
+                })
+            }
+
+            return res.redirect('/users')
+        })
+    },
+
+    /**
+     * Suppression d'un utilisateur.
+     * 
+     * @param {*} req 
+     * @param {*} res 
+     */
+    delete: (req, res) => {
+        User.findOneAndRemove({_id: req.params.id}, err => {
+            if (err) {
+                return res.status(500).render('errors/internal', {
+                    code: 500,
+                    message: 'Erreur lors de la suppression de l\'utilisateur.'
+                })
+            }
+
+            return res.redirect('/users')
+        })
     }
 }

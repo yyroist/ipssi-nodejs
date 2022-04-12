@@ -13,9 +13,5 @@ let UserSchema = new Schema({
     age: {type: Number}
 })
 
-UserSchema
-    .virtual('url')
-    .get(() => `/user/${this._id}`)
-
 // Export
 module.exports = mongoose.model('User', UserSchema)
