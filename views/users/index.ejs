@@ -1,0 +1,36 @@
+<%- include ('../partials/header') %> 
+
+<div class="uk-container uk-margin-top">
+    <h1>Liste Utilisateurs</h1>
+
+    <table class="uk-table uk-table-striped uk-table-small">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Âge</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (users.length) { %>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td><%= user.lastname %></td>
+                        <td><%= user.firstname %></td>
+                        <td><%= user.age %></td>
+                        <td>
+                            <a href="/user/<%= user.id %>" uk-icon="icon: info" uk-tooltip="Consulter fiche utilisateur"></a>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="3" class="uk-text-center">Aucun utilisateur.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<%- include ('../partials/footer') %>
