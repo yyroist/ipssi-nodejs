@@ -4,4 +4,15 @@
     <h1>IPSSI - Node JS</h1>
 </div>
 
+<div class="uk-container">
+    <% if (articles.length) { %>
+        <% articles.forEach(article => { %>
+            <article class="uk-article">
+                <h1 class="uk-article-title"><%= article.title %></h1>
+                <p class="uk-article-meta">Auteur : <%= article.user.lastname + ' ' + article.user.firstname %></p>
+            </article>
+        <% }) %>
+    <% } %>
+</div>
+
 <%- include ('partials/footer') %>

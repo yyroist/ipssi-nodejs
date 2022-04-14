@@ -1,0 +1,41 @@
+<%- include ('../partials/header') %> 
+
+<div class="uk-container uk-margin-top">
+    <h1 class="uk-text-center">Liste articles</h1>
+
+    <a href="/article/create" class="uk-button uk-button-primary uk-button-small uk-align-right">
+        Ajouter un nouvel article
+    </a>
+
+    <table class="uk-table uk-table-striped uk-table-small">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (articles.length) { %>
+                <% articles.forEach(article => { %>
+                    <tr>
+                        <td><%= article.title %></td>
+                        <td><%= article.user.lastname + ' ' + article.user.firstname %></td>
+                        <td>
+                            <a href="/article/<%= article.id %>" uk-icon="icon: info" uk-tooltip="Voir article"></a>
+                            <a href="/article/<%= article.id %>/edit" uk-icon="icon: pencil" uk-tooltip="Editer article"></a>
+                            <a href="/article/<%= article.id %>/delete" class="uk-text-danger" 
+                                uk-icon="icon: trash" uk-tooltip="Supprimer article"></a>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4" class="uk-text-center">Aucun article.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<%- include ('../partials/footer') %>

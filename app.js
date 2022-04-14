@@ -18,7 +18,7 @@ app.use('', router)
 
 // Gestion des erreurs 404
 app.use(function(req, res, next) {
-    res.status(404).render('404');
+    res.status(404).render('errors/404');
 });
 
 app.listen(port, () => console.log(`Server listening to port ${port}`))

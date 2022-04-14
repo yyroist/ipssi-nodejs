@@ -1,0 +1,15 @@
+<%- include ('../partials/header') %>
+
+<div class="uk-container">
+    <article class="uk-article">
+        <h1 class="uk-article-title"><%= article.title %></h1>
+        <p class="uk-article-meta">Auteur : <%= article.user.lastname + ' ' + article.user.firstname %></p>
+        <p><%= article.description %></p>
+    </article>
+
+    <a href="/" class="uk-button uk-button-default uk-button-small uk-margin-top">
+        Retour à l'accueil
+    </a>
+</div>
+
+<%- include ('../partials/footer') %>
