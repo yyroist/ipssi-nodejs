@@ -15,7 +15,7 @@ module.exports = {
      */
     index: (req, res) => {
         User.find({}, (err, users) => {
-            return res.render('users/index', {users})
+            return res.status(200).render('users/index', {users})
         })
     }, 
 
@@ -29,7 +29,7 @@ module.exports = {
             if (err) {
                 return res.status(404).render('errors/404')
             }
-            return res.render('users/show', {user})
+            return res.status(200).render('users/show', {user})
         })
     },
 

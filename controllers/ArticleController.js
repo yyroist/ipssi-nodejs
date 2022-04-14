@@ -17,7 +17,7 @@ module.exports = {
     index: async(req, res) => {
         let articles = await Article.find({}).populate('user')
         console.log(articles)
-        return res.render('articles/index', {articles})
+        return res.status(200).render('articles/index', {articles})
     }, 
 
     /**
@@ -28,7 +28,7 @@ module.exports = {
      */
     show: async(req, res) => {
         let article = await Article.findOne({_id: req.params.id}).populate('user')
-        return res.render('articles/show', {article})
+        return res.status(200).render('articles/show', {article})
     },
 
     /**
@@ -65,7 +65,7 @@ module.exports = {
         let users = await User.find({})
         let article = await Article.findOne({_id: req.params.id}).populate('user')
 
-        return res.render('articles/edit', {article, users})
+        return res.status(200).render('articles/edit', {article, users})
     },
 
     /**
