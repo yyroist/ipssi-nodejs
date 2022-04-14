@@ -15,6 +15,10 @@
         type: String, 
         required: true
     },
+    photo: {
+        type: String,
+        default: 'https://picsum.photos/1280/780'
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'

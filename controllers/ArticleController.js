@@ -83,8 +83,6 @@ module.exports = {
                 })
             }
 
-            console.log(req.body)
-
             return res.redirect('/')
         })
     },

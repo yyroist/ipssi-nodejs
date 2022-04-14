@@ -20,7 +20,7 @@
                 <% articles.forEach(article => { %>
                     <tr>
                         <td><%= article.title %></td>
-                        <td><%= article.user.lastname + ' ' + article.user.firstname %></td>
+                        <td><%= article.user !== null ? article.user.lastname + ' ' + article.user.firstname : 'Auteur Anonyme' %></td>
                         <td>
                             <a href="/article/<%= article.id %>" uk-icon="icon: info" uk-tooltip="Voir article"></a>
                             <a href="/article/<%= article.id %>/edit" uk-icon="icon: pencil" uk-tooltip="Editer article"></a>

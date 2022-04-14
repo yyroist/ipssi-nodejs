@@ -1,9 +1,13 @@
 <%- include ('../partials/header') %>
 
 <div class="uk-container">
-    <article class="uk-article">
+    <div class="uk-cover-container uk-height-medium">
+        <img src="<%= article.photo %>" uk-cover>
+    </div>
+
+    <article class="uk-article uk-margin-top">
         <h1 class="uk-article-title"><%= article.title %></h1>
-        <p class="uk-article-meta">Auteur : <%= article.user.lastname + ' ' + article.user.firstname %></p>
+        <p class="uk-article-meta">Auteur : <%= article.user !== null ? article.user.lastname + ' ' + article.user.firstname : 'Auteur Anonyme' %></p>
         <p><%= article.description %></p>
     </article>
 

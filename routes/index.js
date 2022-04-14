@@ -12,8 +12,8 @@ exports.router = (() => {
     
     // CRUD Utilisateurs
     router.route('/users').get(UserController.index)
-    router.route('/users/create').get(UserController.new)
-    router.route('/users/create').post(UserController.create)
+    router.route('/user/create').get(UserController.new)
+    router.route('/user/create').post(UserController.create)
     router.route('/user/:id').get(UserController.show)
     router.route('/user/:id/delete').get(UserController.delete)
     router.route('/user/:id/edit').post(UserController.edit)
