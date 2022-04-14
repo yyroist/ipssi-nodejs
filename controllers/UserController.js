@@ -15,6 +15,13 @@ module.exports = {
      */
     index: (req, res) => {
         User.find({}, (err, users) => {
+            if (err) {
+                return res.status(500).render('errors/internal', {
+                    code: 500,
+                    message: 'Erreur lors de la récupération des utilisateurs.'
+                })
+            }
+
             return res.status(200).render('users/index', {users})
         })
     }, 

@@ -15,8 +15,16 @@ module.exports = {
      * @returns 
      */
     index: async(req, res) => {
-        let articles = await Article.find({}).populate('user')
-        console.log(articles)
+        let articles = await Article.find({}, err => {
+            if (err) {
+                return res.status(500).render('errors/internal', {
+                    code: 500,
+                    message: 'Erreur lors de la récupération des articles.'
+                })
+            }
+        })
+        .populate('user')
+
         return res.status(200).render('articles/index', {articles})
     }, 
 
@@ -38,7 +46,17 @@ module.exports = {
      * @param {*} res 
      */
     new: (req, res) => {
-        User.find({}, (err, users) => res.status(200).render('articles/new', {users}))
+        User.find({}, (err, users) => {
+            if (err) {
+                return res.status(500).render('errors/internal', {
+                    code: 500,
+                    message: 'Erreur lors de la récupération de la liste des auteurs disponibles.'
+                })
+            }
+
+            res.status(200).render('articles/new', {users})
+        })
+            
     },
 
     /**
