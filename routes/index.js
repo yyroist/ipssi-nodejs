@@ -23,9 +23,9 @@ exports.router = (() => {
     router.route('/article/create').get(ArticleController.new)
     router.route('/article/create').post(ArticleController.create)
     router.route('/article/:id').get(ArticleController.show)
-    router.route('/article/:id/delete').get(ArticleController.delete)
+    router.route('/article/:id').put(ArticleController.update)
+    router.route('/article/:id').delete(ArticleController.delete)
     router.route('/article/:id/edit').get(ArticleController.edit)
-    router.route('/article/:id/update').post(ArticleController.update)
 
     return router
 })()

@@ -22,10 +22,14 @@
                         <td><%= article.title %></td>
                         <td><%= article.user !== null ? article.user.lastname + ' ' + article.user.firstname : 'Auteur Anonyme' %></td>
                         <td>
-                            <a href="/article/<%= article.id %>" uk-icon="icon: info" uk-tooltip="Voir article"></a>
-                            <a href="/article/<%= article.id %>/edit" uk-icon="icon: pencil" uk-tooltip="Editer article"></a>
-                            <a href="/article/<%= article.id %>/delete" class="uk-text-danger" 
-                                uk-icon="icon: trash" uk-tooltip="Supprimer article"></a>
+                            <div class="uk-flex">
+                                <a href="/article/<%= article.id %>" uk-icon="icon: info" uk-tooltip="Voir article"></a>
+                                <a href="/article/<%= article.id %>/edit" uk-icon="icon: pencil" uk-tooltip="Editer article"></a>
+                                <form action="/article/<%= article.id %>" method="post">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <button type="submit" type="submit" class="uk-text-danger uk-margin-auto-top uk-margin-auto-bottom" uk-icon="icon: trash" uk-tooltip="Supprimer article"></button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 <% }) %>

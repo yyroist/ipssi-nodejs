@@ -15,17 +15,7 @@ module.exports = {
      * @param {*} res 
      */
     index: async(req, res) => {
-        // Récupération de la liste des articles à afficher
-        let articles = await Article.find({}, err => {
-            if (err) {
-                return res.status(500).render('errors/internal', {
-                    code: 500,
-                    message: 'Erreur lors de la récupération des articles.'
-                })
-            }
-        })
-        .populate('user')
-        
+        let articles = await Article.find({}).populate('user')
         return res.status(200).render('index', {articles})
     }
 }

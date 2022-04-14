@@ -4,7 +4,9 @@
     <h1 class="uk-text-center">Modifier un article</h1>
 
     <div class="uk-width-1-2 uk-align-center">
-        <form action="/article/<%= article._id %>/update" method="post">
+        <form action="/article/<%= article._id %>" method="post">
+            <input type="hidden" name="_method" value="put">
+
             <input type="text" name="title" placeholder="Nom" class="uk-input uk-form-small" value="<%= article.title %>" required>
 
             <textarea name="description" cols="30" rows="5"
@@ -16,7 +18,7 @@
             <label for="user" class="uk-form-label uk-margin-small-top">Auteur</label>
             <select name="user" id="user" class="uk-select uk-form-small">
                 <% users.forEach(u => { %>
-                    <option value="<%= u._id %>" data-test="<%= article.user.id %>" >
+                    <option value="<%= u._id %>">
                         <%= u.lastname %> <%= u.firstname %>
                     </option>
                 <% }) %>
